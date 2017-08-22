@@ -109,3 +109,5 @@ def permutation_nation(n=None):
     nullshuffsort = np.sort(nullshuff)
     pval = nullshuffsort[:,99977]
     pval = pval.reshape(69,1)
+
+    
