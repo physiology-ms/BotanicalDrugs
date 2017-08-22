@@ -107,5 +107,5 @@ def permutation_nation(n=None):
     realdiff = realdiff.reshape(69,1)
     
     nullshuffsort = np.sort(nullshuff)
-    pval = nullshuffsort[:,95000]
+    pval = nullshuffsort[:,99977]
     pval = pval.reshape(69,1)
