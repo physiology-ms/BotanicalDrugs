@@ -1,4 +1,0 @@
-# BotanicalDrugs
-
-
-print(hello world)
