@@ -78,8 +78,6 @@ def permutation(n=None):
      #동일한 사이즈의 영행렬을 n개 생성
     shuffle2 = np.zeros((nationdata.shape[0], booleandata.shape[0], n)) # 42 * 69 * 50000
     
-#    shuffle3 = np.zeros((nationdata.shape[0], nationdata.shape[1], n))
-    
     for i in range(n):
         shuffle = np.zeros((nationdata.shape[0], nationdata.shape[1]))
         
@@ -88,7 +86,6 @@ def permutation(n=None):
         
         # shuffle을 비율화
         shuffle = shuffle/np.reshape(np.sum(shuffle, axis=1),(nationdata.shape[0],1))
-#        shuffle3[:,:,i] = shuffle
         
         for k in range(len(feature)):
         # if i=0, 한성의 약재가 true, 나머지가 false로 나뉨, 일련번호를 매기는 것
@@ -111,26 +108,8 @@ def permutation(n=None):
     nullshuff = np.sort(nullshuff)
     pval = nullshuff[:,95000]
     pval = pval.reshape(69,1)
-
-
-
-#    nullshuff1_1 = abs(shuffle3[0] - shuffle3[1])
-#    nullshuff2_1 = abs(shuffle3[2] - shuffle3[3])
-#    nullshuff1 = np.concatenate((nullshuff1_1, nullshuff2_1), axis = 1)
-#    
-#    nationdata1_mean = np.mean(nationdata1, axis=0)
-#    nationdata2_mean = np.mean(nationdata2, axis=0) 
-#    realdiff1 = abs(nationdata1_mean - nationdata2_mean)
-#    realdiff1 = realdiff1.reshape(214,1)
-#    
-#    nullshuff1 = np.sort(nullshuff1)
-#    pval1 = nullshuff1[:,95000]
-#    pval1 = pval1.reshape(214,1)
     
     per = np.concatenate((realdiff, pval), axis = 1)
     per = pd.DataFrame(per)
     per.to_excel(a + b +' permutation union.xlsx')
-    
-#    nullshuff = np.transpose(nullshuff) #엑셀 저장용. 엑셀의 column은 100000만개를 담을수 없어서 전치시켜줌
-#    nullshuff = pd.DataFrame(nullshuff)
-#    nullshuff.to_excel(a +' with '+ b + ' permutation.xlsx')
+
