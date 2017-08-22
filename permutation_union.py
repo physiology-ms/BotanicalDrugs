@@ -5,6 +5,7 @@ Created on Tue May 16 11:25:47 2017
 @author: physiology
 
 한-중-일 나라끼리 섞어 permutation하는 코드
+
 """
 import os
 os.chdir(r'C:\Users\physiology\Desktop\paper')
