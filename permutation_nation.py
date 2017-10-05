@@ -76,7 +76,27 @@ def permutation_nation(n=None):
     
     nationdata2 = np.sum(nationdata2, axis=0)/nationdata2.shape[0]
     nationdata2 = nationdata2/np.sum(nationdata2)
+
+        
+        
+   # positive set 점검용 positive real data 만드는 코드 추가   
+    testset1 = np.zeros((len(feature),1))
+    testset2 = np.zeros((len(feature),1))
     
+    for k in range(len(feature)):
+        test1 = nationdata1[booleandata[k,:] == 1]
+        test1 = np.sum(test1)
+        testset1[k] = test1
+        
+        test2 = nationdata2[booleandata[k,:] == 1]
+        test2 = np.sum(test2)
+        testset2[k] = test2
+        
+    # positive real data        
+    positive_diff = abs(testset1-testset2)   
+    
+    
+   
     shuffle1 = np.zeros((len(feature), n))
     for i in range(n):
         shuf_nation = np.random.permutation(nationdata1)
@@ -110,4 +130,6 @@ def permutation_nation(n=None):
     pval = nullshuffsort[:,99977]
     pval = pval.reshape(69,1)
 
-    
+    # permution 결과 두 개의 null 나라 온성 약물 사용량 차이의 분산
+    varshuff = np.var(shuffle1[3,:]-shuffle2[3,:])
+    print (varshuff)     
