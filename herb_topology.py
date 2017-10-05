@@ -119,3 +119,24 @@ topology_graph_df.to_excel("topology_graph_cutoff_"+str(cutoff)+".xlsx")
 feature_df = pd.DataFrame({"name":feature})
 feature_df = feature_df.reset_index()
 feature_df.to_excel("topology_feature_cutoff_"+str(cutoff)+".xlsx")
+
+"""
+10.05 나라 별 feature 가중치 추가
+"""
+weight1 = np.zeros((len(feature),1))
+weight2 = np.zeros((len(feature),1))
+                   
+for k in range(len(feature)):    
+    test1 = nationdata1[booleandata[:,k] == 1]    
+    test1 = np.sum(test1)    
+    weight1[k] = test1 
+    
+    test2 = nationdata2[booleandata[:,k] == 1]   
+    test2 = np.sum(test2)    
+    weight2[k] = test2   
+    
+weight1 = pd.DataFrame(weight1)
+weight2 = pd.DataFrame(weight2)
+
+weight1.to_excel("weight_cutoff_"+str(cutoff)+a+".xlsx")
+weight2.to_excel("weight_cutoff_"+str(cutoff)+b+".xlsx")
